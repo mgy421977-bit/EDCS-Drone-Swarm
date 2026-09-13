@@ -9,6 +9,24 @@ It is designed for real-world environments where GPS can be denied, communicatio
 
 ---
 
+## Research Identity & Network
+
+**EDCS — Emergent Drone Coordination System**
+
+EDCS is a **research / simulation prototype** for decentralized, self-healing drone swarm coordination. It is **not** an operational or certified military/defense system. Current results come from architecture definition and a Python 2D simulation; they should not be read as field-proven operational performance, electronic-warfare immunity, or certified reliability.
+
+| Resource | URL |
+|----------|-----|
+| EDCS canonical project page | https://vitavoltglobal.com/edcs.html |
+| EDCS research page | https://vitavoltglobal.com/research/edcs.html |
+| Vitavolt Research | https://vitavoltglobal.com/research/ |
+| Research publication map | https://vitavoltglobal.com/research/publications.html |
+| This repository | https://github.com/mgy421977-bit/EDCS-Drone-Swarm |
+
+Vitavolt Global → Vitavolt Research → EDCS → this repository.
+
+---
+
 ## Core Value Proposition
 
 Most existing drone swarm systems rely on centralized command-and-control. This creates critical weaknesses:
