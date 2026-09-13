@@ -3,9 +3,9 @@
 **Fully Decentralized, Self-Healing Drone Swarm Architecture**  
 **Vitavolt Global Enerji | Technology Portfolio**
 
-EDCS is a completely decentralized drone swarm coordination framework that enables autonomous formation, resilient operation, and automatic recovery without any central command node.
+EDCS is a research architecture for completely decentralized drone swarm coordination. The design aims to support autonomous formation, resilient operation, and automatic recovery without a permanent central command node.
 
-It is designed for real-world environments where GPS can be denied, communication can be jammed, and individual drones can be lost.
+It is intended for environments where GPS may be intermittent or denied, communication may be degraded, and individual drones may be lost. These conditions are treated as **design objectives** evaluated in simulation; they are not presented as field-proven operational results.
 
 ---
 
@@ -36,60 +36,62 @@ Most existing drone swarm systems rely on centralized command-and-control. This 
 - Limited scalability
 - Vulnerability to GPS jamming and spoofing
 
-**EDCS solves these problems** through three core innovations:
+**EDCS is designed to address these weaknesses** through three core architectural ideas (evaluated in the current 2D simulation):
 
 1. **Reference Signal Propagation** – Distributed formation initialization via nearest-neighbor signal chaining
-2. **Adaptive Artificial Potential Fields** – Smooth, collision-free motion control
-3. **Distributed Self-Healing** – Automatic detection and recovery from drone loss
+2. **Adaptive Artificial Potential Fields** – Smooth, collision-avoiding motion control in the model
+3. **Distributed Self-Healing** – Detection and recovery from simulated drone loss while preserving formation shape
 
-The system operates with **minimum communication** (primarily passive Bluetooth RSSI) and remains functional in GPS-denied environments.
+The architecture targets **minimum communication** (primarily passive Bluetooth RSSI in the design) and explores operation under intermittent or denied GPS as a research direction—not as a certified field capability.
 
 ---
 
-## Key Technical Features
+## Key Technical Features (design / simulation)
 
 | Feature | Description |
 |--------|-------------|
-| Fully Decentralized | No central command, no permanent leader drone |
-| Self-Healing | Automatic reformation after drone loss while preserving formation shape |
-| Low Communication Load | Primarily uses passive Bluetooth RSSI |
-| GPS Resilient | Can operate with intermittent or denied GPS |
-| Scalable | Local decision-making allows natural scaling |
-| Adaptive Motion | Potential field based smooth trajectories |
+| Fully Decentralized | No permanent central command or leader drone in the architecture |
+| Self-Healing (sim) | Automatic reformation after simulated drone loss while preserving formation shape |
+| Low Communication Load | Design preference for primarily passive Bluetooth RSSI |
+| GPS resilience (design objective) | Intended to operate with intermittent or denied GPS; not field-validated |
+| Scalable (local decisions) | Local decision-making is intended to support natural scaling |
+| Adaptive Motion | Potential-field based trajectories in the simulation model |
 
 ---
 
 ## Core Algorithms
 
 ### 1. Reference Signal Propagation
-The first drone that obtains reliable positioning becomes a temporary Reference Drone and broadcasts a Reference Signal (position + formation pattern + scale). The signal propagates only to the nearest neighbor (highest RSSI), creating a low-overhead distributed chain that initializes the formation.
+In the model, the first drone that obtains reliable positioning becomes a temporary Reference Drone and broadcasts a Reference Signal (position + formation pattern + scale). The signal propagates only to the nearest neighbor (highest RSSI), creating a low-overhead distributed chain that initializes the formation.
 
 ### 2. Adaptive Artificial Potential Fields
 
-Total force on each drone:
+Total force on each drone in the model:
 
 ```
 F = F_rep + F_coh + F_goal
 ```
 
-- **F_rep** (Repulsive): Prevents collisions
-- **F_coh** (Cohesive): Maintains swarm integrity
-- **F_goal** (Attractive): Guides the mission objective
+- **F_rep** (Repulsive): Collision avoidance term
+- **F_coh** (Cohesive): Swarm integrity term
+- **F_goal** (Attractive): Mission objective term
 
-This produces smooth trajectories and automatic collision avoidance.
+This produces smooth trajectories and collision avoidance behavior in simulation.
 
 ### 3. Distributed Self-Healing
-Every drone continuously monitors its neighbors via RSSI. When a missing neighbor is detected, a local query is initiated. If no response is received, the swarm automatically reforms while preserving the overall formation shape.
+Every drone continuously monitors its neighbors via RSSI in the model. When a missing neighbor is detected, a local query is initiated. If no response is received, the swarm reforms while preserving the overall formation shape (simulation behavior).
 
 ---
 
-## Target Applications
+## Intended application domains (research targets)
 
-- **Agricultural Spraying** – Large-area coverage with formation resilience
-- **Disaster Response & Search-and-Rescue** – Operation in infrastructure-collapsed and low-signal environments
-- **Area Scanning & Security** – Persistent surveillance with long endurance
-- **UAV / SİHA Tactical Operations** – Resilience against jamming and single-point failures
-- **High-Speed Automated Highway Systems** – Continuous corridor monitoring and incident support
+Candidate domains for future evaluation—not proven operational deployments:
+
+- **Agricultural spraying** – Large-area coverage with formation resilience as a design goal
+- **Disaster response & search-and-rescue** – Operation in infrastructure-degraded and low-signal environments (research target)
+- **Area scanning & security** – Persistent coverage concepts under study
+- **UAV coordination research** – Resilience to single-point failures and degraded navigation as architectural goals (not a certified tactical or defense product)
+- **Corridor / infrastructure monitoring concepts** – Continuous monitoring scenarios as possible future pilots
 
 ---
 
@@ -104,13 +106,15 @@ Current implementation includes:
 
 Simulation code is located in `src/`.
 
+Hardware prototype, UWB integration, and field trials remain **planned**, not completed.
+
 ---
 
 ## Anne AI & Ethical Framework
 
-EDCS is being developed within Vitavolt’s broader technology vision that also includes **Anne AI** — an ethical, empathetic multi-agent AI initiative focused on human-centered and responsible autonomy.
+EDCS is being developed within Vitavolt’s broader technology vision that also includes **ANNE** (ANNE — AGI-Oriented Open Cognitive Architecture) as a related research thread focused on cognitive orchestration and responsible autonomy.
 
-The long-term goal is to explore the integration of ethical decision layers and multi-agent coordination principles between Anne AI and physical swarm systems such as EDCS.
+The long-term research goal is to explore whether ethical decision layers and multi-agent coordination principles from ANNE-style architectures can inform physical swarm systems such as EDCS. This remains a research direction, not an integrated product claim.
 
 ---
 
@@ -143,7 +147,7 @@ EDCS-Drone-Swarm/
 
 ## Collaboration & Funding
 
-EDCS is positioned as a strategic technology within **Vitavolt Global Enerji**.
+EDCS is positioned as a strategic research technology within **Vitavolt Global Enerji**.
 
 We are open to:
 
@@ -167,4 +171,4 @@ GitHub: [github.com/mgy421977-bit/EDCS-Drone-Swarm](https://github.com/mgy421977
 
 ---
 
-*EDCS – Emergent intelligence for resilient autonomous systems.*
+*EDCS — research architecture for resilient decentralized swarm coordination (simulation prototype).*
